@@ -70,9 +70,13 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
   const hasEnvKey = !!(envVarName && envVars[envVarName]);
 
   // Special handling for Azure OpenAI configuration
+  const azureSettings = settings?.providerSettings?.azure as any;
   const isAzureConfigured =
     provider === "azure"
-      ? !!(envVars["AZURE_API_KEY"] && envVars["AZURE_RESOURCE_NAME"])
+      ? !!(
+          (azureSettings?.azureApiKey?.value && azureSettings?.resourceName) ||
+          (envVars["AZURE_API_KEY"] && envVars["AZURE_RESOURCE_NAME"])
+        )
       : false;
 
   // Special handling for Vertex configuration status
