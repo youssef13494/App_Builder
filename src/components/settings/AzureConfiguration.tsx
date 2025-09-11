@@ -120,7 +120,7 @@ export function AzureConfiguration({ envVars }: AzureConfigurationProps) {
     >
       <AccordionItem
         value="settings-config"
-        className="border rounded-lg px-4 bg-background"
+        className="border rounded-lg px-4 bg-(--background-lightest)"
       >
         <AccordionTrigger className="text-lg font-medium hover:no-underline cursor-pointer">
           Azure Configuration from Settings
@@ -221,7 +221,7 @@ export function AzureConfiguration({ envVars }: AzureConfigurationProps) {
 
       <AccordionItem
         value="env-config"
-        className="border rounded-lg px-4 bg-background"
+        className="border rounded-lg px-4 bg-(--background-lightest)"
       >
         <AccordionTrigger className="text-lg font-medium hover:no-underline cursor-pointer">
           Environment Variables Configuration
