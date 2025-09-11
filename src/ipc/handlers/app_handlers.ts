@@ -732,10 +732,6 @@ export function registerAppHandlers() {
       if (provider.envVarName) {
         envVars[provider.envVarName] = getEnvVar(provider.envVarName);
       }
-      // Special case for Azure: also read AZURE_RESOURCE_NAME
-      if (provider.id === "azure") {
-        envVars["AZURE_RESOURCE_NAME"] = getEnvVar("AZURE_RESOURCE_NAME");
-      }
     }
     return envVars;
   });

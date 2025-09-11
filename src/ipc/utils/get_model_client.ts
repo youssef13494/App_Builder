@@ -334,33 +334,23 @@ function getRegularModelClient(
         };
       }
 
-      // Azure OpenAI configuration priority: Settings first, then environment variables
+      // Azure OpenAI configuration from settings only
       const azureSettings = settings.providerSettings?.[
         model.provider
       ] as AzureProviderSetting;
 
-      // Check settings first
-      let resourceName = azureSettings?.resourceName;
-      let azureApiKey = azureSettings?.azureApiKey?.value;
-
-      // Fall back to environment variables if settings not configured
-      if (!resourceName || !azureApiKey) {
-        const envResourceName = getEnvVar("AZURE_RESOURCE_NAME");
-        const envAzureApiKey = getEnvVar("AZURE_API_KEY");
-
-        resourceName = resourceName || envResourceName;
-        azureApiKey = azureApiKey || envAzureApiKey;
-      }
+      const resourceName = azureSettings?.resourceName;
+      const azureApiKey = azureSettings?.azureApiKey?.value;
 
       if (!resourceName) {
         throw new Error(
-          "Azure OpenAI resource name is required. Please configure it in Settings or set the AZURE_RESOURCE_NAME environment variable.",
+          "Azure OpenAI resource name is required. Please configure it in the Azure provider settings.",
         );
       }
 
       if (!azureApiKey) {
         throw new Error(
-          "Azure OpenAI API key is required. Please configure it in Settings or set the AZURE_API_KEY environment variable.",
+          "Azure OpenAI API key is required. Please configure it in the Azure provider settings.",
         );
       }
 
