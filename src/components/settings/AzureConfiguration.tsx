@@ -5,7 +5,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Info, CheckCircle2 } from "lucide-react";
 import { useSettings } from "@/hooks/useSettings";
 import type { UserSettings, AzureProviderSetting } from "@/lib/schemas";
-
+//hello brothers
 export function AzureConfiguration() {
   const { settings, updateSettings } = useSettings();
   const existing =
